@@ -7,15 +7,17 @@ https://github.com/DiNitride
 # Fine china imports
 import discord
 from discord.ext import commands
+
 import json
+import asyncio
+import inspect
+import logbook
+
 from utils import setting
 from utils import checks
 from utils import rates
-from utils import logging
-import asyncio
-import inspect
 
-print(discord.__version__)
+print("Discord.py Version: " + discord.__version__)
 
 # Set's bot's description and prefixes in a list
 description = """
@@ -31,7 +33,8 @@ Invite Link: https://discordapp.com/oauth2/authorize?&client_id=1737085037964165
 
 bot = commands.Bot(command_prefix=['$'], description=description, pm_help=True)
 
-log = logging.Logging
+bot.logger = logbook.Logger('GAF-Bot')
+bot.logger.warn("test")
 
 # Load config file
 with open("config/config.json") as data:
